@@ -3,6 +3,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:gym1/filtergymbyrating.dart';
+import 'package:gym1/membershipdetails.dart';
 
 import '../../utils/color_manager.dart';
 import '../../utils/navigators.dart';
@@ -74,7 +75,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                       child: MaterialButton(
 
                         onPressed: () {
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>FilterGymbyRating(),
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>MemberShipDetails(),
                           ),
                           );
                         },
