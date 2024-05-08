@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gym1/Information.dart';
@@ -18,6 +19,25 @@ class _SignupPageState extends State<SignupPage> {
   TextEditingController password = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+
+  Future<void> addUser(String uid) {
+    // Call the user's CollectionReference to add a new user with the UID
+    return users
+        .doc(uid) // Use the UID as the document ID
+        .set({
+      'username': username.text,
+      'email': email.text,
+    })
+        .then((value) => Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => Information(),
+      ),
+    ))
+        .catchError((error) => print("Failed to add user: $error"));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,12 +117,8 @@ class _SignupPageState extends State<SignupPage> {
                           email: email.text,
                           password: password.text,
                         );
-                        // Navigate to Home page if registration is successful
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (context) =>Information(),
-                          ),
-                        );
+                        final currentUser = FirebaseAuth.instance.currentUser!;
+                        addUser(currentUser.uid);
                       } catch (e) {
                         print("Error during sign up: $e");
                         // Handle error messages or display them to the user

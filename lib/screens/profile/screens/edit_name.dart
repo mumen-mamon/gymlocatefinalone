@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:string_validator/string_validator.dart';
 import '../../../widgets/appBar/custom_appBar.dart';
@@ -19,22 +20,32 @@ class EditNameFormPageState extends State<EditNameFormPage> {
   final secondNameController = TextEditingController();
   var user = UserData.myUser;
 
+
+
+
   @override
   void dispose() {
     firstNameController.dispose();
     super.dispose();
   }
 
-  void updateUserValue(String name) {
-    user.name = name;
+  void updateUserValue(Map<String, dynamic> data) {
+    if (data.containsKey('username')) {
+      user.name = data['username'].toString();
+    } else {
+      // Handle case where 'username' key is not present in data
+    }
   }
+
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return
+      Scaffold(
         appBar: Custom_AppBar(''),
         body: Form(
           key: _formKey,
+
           child: Padding(
             padding: const EdgeInsets.only(top: 50),
             child: Column(
@@ -103,7 +114,7 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                             onPressed: () {
                               // Validate returns true if the form is valid, or false otherwise.
                               if (_formKey.currentState!.validate() && isAlpha(firstNameController.text + secondNameController.text)) {
-                                updateUserValue("${firstNameController.text} ${secondNameController.text}");
+                               // updateUserValue("${firstNameController.text} ${secondNameController.text}");
                                 Navigator.pop(context);
                               }
                             },

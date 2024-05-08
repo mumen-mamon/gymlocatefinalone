@@ -30,7 +30,8 @@ class EditEmailFormPageState extends State<EditEmailFormPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return
+      Scaffold(
         appBar: Custom_AppBar(''),
         body: Form(
           key: _formKey,

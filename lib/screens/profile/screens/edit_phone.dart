@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:string_validator/string_validator.dart';
 import '../../../widgets/appBar/custom_appBar.dart';
@@ -16,6 +18,21 @@ class EditPhoneFormPageState extends State<EditPhoneFormPage> {
   final _formKey = GlobalKey<FormState>();
   final phoneController = TextEditingController();
   var user = UserData.myUser;
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+
+
+  Future<void> addUser(String uid) {
+    // Call the user's CollectionReference to add a new user with the UID
+    return users
+        .doc(uid) // Use the UID as the document ID
+        .update({
+      'phoneController': phoneController.text,
+
+    });
+
+  }
+
 
   @override
   void dispose() {
@@ -78,6 +95,9 @@ class EditPhoneFormPageState extends State<EditPhoneFormPage> {
                             // Validate returns true if the form is valid, or false otherwise.
                             if (_formKey.currentState!.validate() && isNumeric(phoneController.text)) {
                               updateUserValue(phoneController.text);
+
+                              final currentUser = FirebaseAuth.instance.currentUser!;
+                              addUser(currentUser.uid);
                               Navigator.pop(context);
                             }
                           },
