@@ -2,6 +2,7 @@
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:gym1/filtergymbyrating.dart';
 
 import '../../utils/color_manager.dart';
 import '../../utils/navigators.dart';
@@ -37,22 +38,57 @@ class _Home_ScreenState extends State<Home_Screen> {
               child: SizedBox(
                 height: 60,
                 width: size.width,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  // itemExtent: 140,
-                  itemCount: items.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return InkWell(
-                      onTap: () {},
-                      child: Row(
-                        children: [
-                          custom_Card(h: 50, w: 130, color: ColorManager.backg, text: items[index], size: 14),
-                          const SizedBox(width: 8),
-                        ],
+                child:Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                  Container(
+                decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+                  color: const Color(0xFF496248)),
+        alignment: Alignment.center,
+        height: 150,
+        width: 150,
+                    child: MaterialButton(
+
+                      onPressed: () {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>FilterGymbyRating(),
+                        ),
+                        );
+                      },
+                      child: Text(
+                        'filter gym by rating',
+                        style: TextStyle(
+                          color: Colors.black,
+                         // decoration: TextDecoration.underline,
+                        ),
                       ),
-                    );
-                  },
-                ),
+                    ),
+                  ),
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: const Color(0xFF496248)),
+                      alignment: Alignment.center,
+                      height: 150,
+                      width: 150,
+                      child: MaterialButton(
+
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>FilterGymbyRating(),
+                          ),
+                          );
+                        },
+                        child: Text(
+                          'member ship details',
+                          style: TextStyle(
+                            color: Colors.black,
+                           // decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ) ,
               ),
             ),
 

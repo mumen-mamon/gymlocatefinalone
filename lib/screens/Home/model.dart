@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 List images = [
   'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/06/d8/0d/0b/the-gym-maui.jpg?w=900&h=-1&s=1',
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPbldyIzAQxwqZwodqnnI_TjkJ8VokP9kmFL5NjGOzuQ&s',
