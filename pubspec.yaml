@@ -114,6 +114,20 @@ flutter:
     - assets/total.png
     - assets/mellion.png
     - assets/20568075.jpg
+    - assets/armyIcon.jpeg
+    - assets/goldsGym.jpeg
+    - assets/vegaGym.jpeg
+    - assets/vFitGym.jpeg
+    - assets/platinumGym.jpeg
+    - assets/gold1.jpeg
+    - assets/gold2.jpeg
+    - assets/gold3.jpeg
+    - assets/gold4.jpeg
+    - assets/gold5.jpeg
+    - assets/gold6.jpeg
+    - assets/gold7.jpeg
+    - assets/gold8.jpeg
+    - assets/gold9.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

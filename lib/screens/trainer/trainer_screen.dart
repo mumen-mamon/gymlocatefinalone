@@ -12,7 +12,7 @@ import '../../widgets/slider/custom_slider.dart';
 import '../../widgets/texts/custom_text.dart';
 
 class Trainer_Screen extends StatefulWidget {
-  const Trainer_Screen({super.key});
+  const Trainer_Screen({super.key,});
 
   @override
   State<Trainer_Screen> createState() => _Trainer_ScreenState();
@@ -43,7 +43,7 @@ class _Trainer_ScreenState extends State<Trainer_Screen> {
                     bottom: 55,
                     child: Padding(
                       padding: const EdgeInsets.only(top: 40, bottom: 10),
-                      child: Custom_Text(text: 'Trainer Name', size: 25),
+                      child: Custom_Text( text: 'Trainer Name', size: 25),
                     ),
                   ),
                   Positioned(

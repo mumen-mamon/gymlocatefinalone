@@ -1,43 +1,44 @@
-// ignore_for_file: camel_case_types, unused_local_variable, prefer_const_constructors, sized_box_for_whitespace
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../utils/color_manager.dart';
-import '../../utils/navigators.dart';
-import '../../widgets/Buttons/scale_button.dart';
-import '../../widgets/appBar/custom_appBar.dart';
-import '../../widgets/cards/img.dart';
-import '../../widgets/slider/custom_slider.dart';
-import '../../widgets/texts/custom_text.dart';
-import '../trainer/trainer_screen.dart';
-import 'model.dart';
+import '../screens/gym_name/model.dart';
+import '../screens/trainer/trainer_screen.dart';
+import '../utils/color_manager.dart';
+import '../utils/navigators.dart';
+import '../widgets/Buttons/scale_button.dart';
+import '../widgets/appBar/custom_appBar.dart';
+import '../widgets/cards/img.dart';
+import '../widgets/slider/custom_slider.dart';
+import '../widgets/texts/custom_text.dart';
 
-class Gym_Name extends StatefulWidget {
-  const Gym_Name({super.key});
+class Platinumgym extends StatefulWidget {
+  const Platinumgym({Key? key}) : super(key: key);
 
   @override
-  State<Gym_Name> createState() => _Gym_NameState();
+  State<Platinumgym> createState() => _PlatinumgymState();
 }
 
-class _Gym_NameState extends State<Gym_Name> {
+class _PlatinumgymState extends State<Platinumgym> {
+  final img=[
+    'https://scontent.famm6-1.fna.fbcdn.net/v/t39.30808-6/312311960_6022147087818155_488852122745679637_n.jpg?stp=dst-jpg_p206x206&_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH3pzVZbyVBlXWcVWwDd_9orIaWZkY-oXKshpZmRj6hcuWlVtnmDBoamwXxOxWzLj_ISgXNcGYXEe_12m47kQYW&_nc_ohc=_pdg999cwRcQ7kNvgH50YGk&_nc_ht=scontent.famm6-1.fna&oh=00_AYAOvpVAx8TCPFS7rgLrSnJjPwl0AfHZOORnVmVgkLBKKA&oe=6644480B',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0RIK-ARWHBZaFlGtRb7yFaOks7wFBei2TolNm3-4o4Hk0GkjBjGl2qzn1wNwEu8f-k_s&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS1tPjnD7EiCJxuxBO6GuxHVL9JwFbWw_W4vIqoDAUMRr81mVs8yIkWDPrJPilnCyE2s0&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2CKk28PPrTLkLEUpfdVfS87ltqXpAnAn3rcJvWpQ1Txo_WqzBp4NynX6GCnFshFdZquM&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN7uWSdUYcasUn7yLlF93DvbNzxuDaIsHyRU696c7ognAwlsbXpNB3i0tXgsA20VlP4I4&usqp=CAU',
+    'https://scontent.famm6-1.fna.fbcdn.net/v/t39.30808-6/422624650_792798069551386_776057862972432191_n.jpg?stp=c52.0.206.206a_dst-jpg_p206x206&_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGbWVJ21mtk7PJOyWHVpxH62Y2YDf0d5QXZjZgN_R3lBfS5owypuQsJfw8gu-WVkN0SdDVSXYdezxerHjuOszhS&_nc_ohc=ZCZXXSm0Ol8Q7kNvgHdHqYt&_nc_ht=scontent.famm6-1.fna&oh=00_AYB6jF-BvfqPN4fMKLMA7zoMRWMplj49TV3k_VhJJhrgzw&oe=66443B76'
+  ];
 
-
+  final List<String> coachNames = ['aseel', 'Lina', 'ibrahim']; // Example coach names
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final img = [
-      'https://lh3.googleusercontent.com/p/AF1QipM0ozEXqnLMd78G42e56LO5Nql8PG0DLD3LMngg=s1600-w720',
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgA1O_20MeY07WA1dfFULIkSxw3fOI2fEtHg3cAGBLog&s',
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrdYghLnZRM8ls7R6H2NG7-QJS3GoJoDjgVnuamwzJaIBWNYeHyBIwK9U0ZK6X2zyvY18&usqp=CAU',
-    ];
     return Scaffold(
-
-      appBar:Custom_AppBar('')
-     , body: Padding(
-        padding: const EdgeInsets.all(10),
+      appBar: Custom_AppBar(''),
+      body: Padding(
+        padding: EdgeInsets.all(10),
         child: SingleChildScrollView(
           child: Column(
-
             children: [
               Stack(
                 children: [
@@ -47,7 +48,7 @@ class _Gym_NameState extends State<Gym_Name> {
                     left: 10,
                     child: Padding(
                       padding: const EdgeInsets.only(top: 40, bottom: 10),
-                      child: Custom_Text(text: 'Gym Name', size: 25, color: Colors.white),
+                      child: Custom_Text(text: 'Platinum gym', size: 25, color: Colors.white),
                     ),
                   ),
                   Positioned(
@@ -71,8 +72,9 @@ class _Gym_NameState extends State<Gym_Name> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Custom_Text(text: 'About The Gym ', size: 25, underline: true),
+                            Custom_Text(text: 'About The Gym ', size: 15, underline: true),
                             Custom_Scale_Button(Color.fromARGB(255, 108, 186, 231), Colors.black, 20, const Icon(Icons.phone), () {}),
+                            Text("07 8548 9999")
                           ],
                         ),
                       ),
@@ -80,21 +82,19 @@ class _Gym_NameState extends State<Gym_Name> {
                         padding: const EdgeInsets.only(top: 15, bottom: 30, right: 30),
                         child: Custom_Text(
                             text:
-                                'Stamina Gym Fitness Center provides proper training and conditioning for members who want to improve and transform their body with Program depend on the body composition.',
+                            'Platinum Gym " bayed Group " The largest sports club in the north of the Hashemite Kingdom of Jordan "Irbid" ..For men and women .. In Irbid City Centre',
                             size: 22,
                             underline: false,
                             color: ColorManager.Light_green),
                       ),
-
-                      // ===========
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Custom_Container_img(
-                              context: context,
-                              h: 350,
-                              w: size.width / 1.9,
-                              img: 'https://www.google.com/maps/d/thumbnail?mid=15QJ_qiK10k15gPLe0NW-R7Zpm40&hl=en_US'),
+                         // Custom_Container_img(
+                          //    context: context,
+                           //   h: 350,
+                            //  w: size.width / 1.9,
+                           //   img: 'https://www.google.com/maps/d/thumbnail?mid=15QJ_qiK10k15gPLe0NW-R7Zpm40&hl=en_US'),
                           Padding(
                             padding: const EdgeInsets.only(left: 10),
                             child: Column(
@@ -112,15 +112,9 @@ class _Gym_NameState extends State<Gym_Name> {
                                     children: [
                                       InkWell(
                                         onTap: () {},
-                                        child: Custom_Container_img(
-                                          context: context,
-                                          h: 35,
-                                          w: 35,
-                                          circular: 50,
-                                          img:
-                                              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShrl-ZYxuud2KegulHKRKecy11bEbkSYq6bsh3XE6WrA&s',
+                                        child: Text("Vega Fitness khalda") ,
                                         ),
-                                      ),
+
                                       const SizedBox(width: 20),
                                       InkWell(
                                         onTap: () {},
@@ -129,8 +123,7 @@ class _Gym_NameState extends State<Gym_Name> {
                                           h: 35,
                                           w: 35,
                                           circular: 50,
-                                          img:
-                                              'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/600px-Instagram_icon.png',
+                                          img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/600px-Instagram_icon.png',
                                         ),
                                       ),
                                     ],
@@ -141,20 +134,15 @@ class _Gym_NameState extends State<Gym_Name> {
                           ),
                         ],
                       ),
-
                       Padding(
                         padding: const EdgeInsets.only(top: 30, bottom: 15),
                         child: Custom_Text(text: 'Coaches', size: 25, underline: true),
                       ),
-
-                      // =======================
-
                       Container(
                         height: 200,
                         width: double.infinity,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          // itemExtent: 140,
                           itemCount: 3,
                           itemBuilder: (BuildContext context, int index) {
                             return InkWell(
@@ -173,18 +161,25 @@ class _Gym_NameState extends State<Gym_Name> {
                                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                         children: [
                                           Container(
-                                            decoration:
-                                                BoxDecoration(border: Border.all(width: 2), borderRadius: BorderRadius.circular(50)),
+                                            decoration: BoxDecoration(border: Border.all(width: 2), borderRadius: BorderRadius.circular(50)),
                                             child: Custom_Container_img(
                                               context: context,
                                               h: 100,
                                               w: 100,
                                               circular: 50,
-                                              img:
-                                                  'https://www.crushpixel.com/big-static15/preview4/muscular-man-practicing-with-dumbbells-1981783.jpg',
+                                              img: 'https://www.crushpixel.com/big-static15/preview4/muscular-man-practicing-with-dumbbells-1981783.jpg',
                                             ),
                                           ),
-                                          Custom_Text(text: 'Coach John', size: 20, underline: true),
+                                          Text(
+                                            coachNames[index], // Use coach names dynamically
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 19,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: 'Lemonada',
+                                              decoration: TextDecoration.underline,
+                                            ),
+                                          ),
                                           const SizedBox(height: 10),
                                         ],
                                       ),
@@ -196,14 +191,10 @@ class _Gym_NameState extends State<Gym_Name> {
                           },
                         ),
                       ),
-
-                      // =================================
-
                       Padding(
                         padding: const EdgeInsets.only(top: 30, bottom: 15),
                         child: Custom_Text(text: 'Join Our Membership', size: 25, underline: false),
                       ),
-
                       Padding(
                         padding: const EdgeInsets.only(bottom: 30, right: 8),
                         child: Column(
@@ -212,7 +203,6 @@ class _Gym_NameState extends State<Gym_Name> {
                             Custom_Text(text: 'Our Plan:', size: 25, underline: true),
                             const SizedBox(height: 10),
                             GridView.count(
-                              // childAspectRatio: (itemWidth / itemHeight),
                               shrinkWrap: true,
                               padding: EdgeInsets.only(left: 15, right: 15),
                               mainAxisSpacing: 15,
