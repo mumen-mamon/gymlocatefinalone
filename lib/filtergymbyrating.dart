@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gym1/gyms/Armygym.dart';
 import 'package:gym1/gyms/Platinumgym.dart';
 import 'package:gym1/gyms/Vegagym.dart';
+import 'package:gym1/gyms/Vfitgym.dart';
 import 'package:gym1/gyms/goldgym.dart';
 import 'package:gym1/screens/gym_name/gym_name.dart';
 //import 'package:flutter/cupertino.dart';
@@ -209,7 +210,7 @@ class _FilterGymbyRatingState extends State<FilterGymbyRating> {
                   onTap: () {
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
-                        builder: (context) => Gym_Name(),
+                        builder: (context) => Vfitgym(),
                       ),
                     );
                   },

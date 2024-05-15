@@ -14,32 +14,31 @@ import '../widgets/cards/img.dart';
 import '../widgets/slider/custom_slider.dart';
 import '../widgets/texts/custom_text.dart';
 
-class Platinumgym extends StatefulWidget {
-  const Platinumgym({Key? key}) : super(key: key);
+class Vfitgym extends StatefulWidget {
+  const Vfitgym({Key? key}) : super(key: key);
 
   @override
-  State<Platinumgym> createState() => _PlatinumgymState();
+  State<Vfitgym> createState() => _VfitgymState();
 }
 
-class _PlatinumgymState extends State<Platinumgym> {
+class _VfitgymState extends State<Vfitgym> {
   final Completer<GoogleMapController> _controller =
   Completer<GoogleMapController>();
 
   static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(32.535106110306266, 35.86512272882304),
+    target: LatLng(31.890405421443038, 35.84286370101152),
     zoom: 14.4746,
   );
+  final img = [
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS45R1Bt8olkIx7Grov2_c9aDmTQ7Hqny6CmuuUiScP2Q&s',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH3loqh5bTc9zCXn6JDxSTD5RicUFS6rQxO9bGNGFpH00MCpf4Qe2H4xUGQLqBozfo_6E&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9lvfSWEiauWZO_7ZmJNSwgQb-AkhX9v2AesB7v0MlS7cXrvDKrGSA_HfNWuP70IpSKd8&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBUefbVSpNSqpAHizLiCSvRa2VP6YDJNr8_hL4Pw28Ug&s',
+    'https://classpass-res.cloudinary.com/image/upload/f_auto/q_auto/mdlekq3kfelws0hdnapj.jpg',
 
-  final img=[
-    'https://scontent.famm6-1.fna.fbcdn.net/v/t39.30808-6/312311960_6022147087818155_488852122745679637_n.jpg?stp=dst-jpg_p206x206&_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH3pzVZbyVBlXWcVWwDd_9orIaWZkY-oXKshpZmRj6hcuWlVtnmDBoamwXxOxWzLj_ISgXNcGYXEe_12m47kQYW&_nc_ohc=_pdg999cwRcQ7kNvgH50YGk&_nc_ht=scontent.famm6-1.fna&oh=00_AYAOvpVAx8TCPFS7rgLrSnJjPwl0AfHZOORnVmVgkLBKKA&oe=6644480B',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0RIK-ARWHBZaFlGtRb7yFaOks7wFBei2TolNm3-4o4Hk0GkjBjGl2qzn1wNwEu8f-k_s&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS1tPjnD7EiCJxuxBO6GuxHVL9JwFbWw_W4vIqoDAUMRr81mVs8yIkWDPrJPilnCyE2s0&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2CKk28PPrTLkLEUpfdVfS87ltqXpAnAn3rcJvWpQ1Txo_WqzBp4NynX6GCnFshFdZquM&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN7uWSdUYcasUn7yLlF93DvbNzxuDaIsHyRU696c7ognAwlsbXpNB3i0tXgsA20VlP4I4&usqp=CAU',
-    'https://scontent.famm6-1.fna.fbcdn.net/v/t39.30808-6/422624650_792798069551386_776057862972432191_n.jpg?stp=c52.0.206.206a_dst-jpg_p206x206&_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGbWVJ21mtk7PJOyWHVpxH62Y2YDf0d5QXZjZgN_R3lBfS5owypuQsJfw8gu-WVkN0SdDVSXYdezxerHjuOszhS&_nc_ohc=ZCZXXSm0Ol8Q7kNvgHdHqYt&_nc_ht=scontent.famm6-1.fna&oh=00_AYB6jF-BvfqPN4fMKLMA7zoMRWMplj49TV3k_VhJJhrgzw&oe=66443B76'
   ];
 
-  final List<String> coachNames = ['aseel', 'Lina', 'ibrahim']; // Example coach names
+  final List<String> coachNames = ['amani', 'ezzaldeen', 'naseer']; // Example coach names
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +58,7 @@ class _PlatinumgymState extends State<Platinumgym> {
                     left: 10,
                     child: Padding(
                       padding: const EdgeInsets.only(top: 40, bottom: 10),
-                      child: Custom_Text(text: 'Platinum gym', size: 25, color: Colors.white),
+                      child: Custom_Text(text: 'Vfit gym', size: 25, color: Colors.white),
                     ),
                   ),
                   Positioned(
@@ -85,7 +84,7 @@ class _PlatinumgymState extends State<Platinumgym> {
                           children: [
                             Custom_Text(text: 'About The Gym ', size: 15, underline: true),
                             Custom_Scale_Button(Color.fromARGB(255, 108, 186, 231), Colors.black, 20, const Icon(Icons.phone), () {}),
-                            Text("07 8548 9999")
+                            Text("07 9884 9141")
                           ],
                         ),
                       ),
@@ -93,7 +92,8 @@ class _PlatinumgymState extends State<Platinumgym> {
                         padding: const EdgeInsets.only(top: 15, bottom: 30, right: 30),
                         child: Custom_Text(
                             text:
-                            'Platinum Gym " bayed Group " The largest sports club in the north of the Hashemite Kingdom of Jordan "Irbid" ..For men and women .. In Irbid City Centre',
+                            'V Fit Ladies gym Get in a perfect body shape with integrated gym'
+                                'Swimming Area - Weights Area - Ca',
                             size: 22,
                             underline: false,
                             color: ColorManager.Light_green),
@@ -122,18 +122,16 @@ class _PlatinumgymState extends State<Platinumgym> {
                                 Custom_Text(text: 'Our Socials:', size: 20, underline: false, color: ColorManager.Light_green),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 18),
-                                  child: Row(
+                                  child: Column(
                                     children: [
                                       InkWell(
-                                        onTap: () {},
-                                        child: Text("facbook: Vega Fitness khalda") ,
-                                        ),
-
-                                      const SizedBox(width: 20),
+                                          onTap: () {},
+                                          child: Text("Facebook: V Fit Ladies Gym")
+                                      ),
+                                      const SizedBox(width: 20,height: 5,),
                                       InkWell(
-                                        onTap: () {},
-                                        child: Text("inestagram : Vega Fitnesss khalda",
-                                        ),
+                                          onTap: () {},
+                                          child: Text("inestagram:  vega Fitnessclubs")
                                       ),
                                     ],
                                   ),
@@ -234,4 +232,6 @@ class _PlatinumgymState extends State<Platinumgym> {
       ),
     );
   }
+
+  custom_Card({required int h, required int w, required int size, required String text, Color? color, required FontWeight fontweight}) {}
 }

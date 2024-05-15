@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../screens/gym_name/model.dart';
 import '../screens/trainer/trainer_screen.dart';
@@ -19,6 +22,13 @@ class Armygym extends StatefulWidget {
 }
 
 class _ArmygymState extends State<Armygym> {
+  final Completer<GoogleMapController> _controller =
+  Completer<GoogleMapController>();
+
+  static const CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(31.990195766401396, 35.95649370473624),
+    zoom: 14.4746,
+  );
   final img = [
     'https://abood.acccnetwork.com/wp-content/uploads/2020/09/124-400x230.jpg',
     'https://mcidecor.com/data/73/30118/16298030053919.jpg',
@@ -87,16 +97,18 @@ class _ArmygymState extends State<Armygym> {
                             underline: false,
                             color: ColorManager.Light_green),
                       ),
-                      Row(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Custom_Container_img(
-                              context: context,
-                              h: 350,
-                              w: size.width / 1.9,
-                              img: 'https://www.google.com/maps/d/thumbnail?mid=15QJ_qiK10k15gPLe0NW-R7Zpm40&hl=en_US'),
+                        children: [ SizedBox(height: 200,),
+                          GoogleMap(
+                            mapType: MapType.normal,
+                            initialCameraPosition: _kGooglePlex,
+                            onMapCreated: (GoogleMapController controller) {
+                              _controller.complete(controller);
+                            },
+                          ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 10),
+                            padding: const EdgeInsets.only(right: 100),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -112,23 +124,13 @@ class _ArmygymState extends State<Armygym> {
                                     children: [
                                       InkWell(
                                         onTap: () {},
-                                        child: Custom_Container_img(
-                                          context: context,
-                                          h: 35,
-                                          w: 35,
-                                          circular: 50,
-                                          img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShrl-ZYxuud2KegulHKRKecy11bEbkSYq6bsh3XE6WrA&s',
+                                        child: Text("facebook: ARMY GYM",
                                         ),
                                       ),
                                       const SizedBox(width: 20),
                                       InkWell(
                                         onTap: () {},
-                                        child: Custom_Container_img(
-                                          context: context,
-                                          h: 35,
-                                          w: 35,
-                                          circular: 50,
-                                          img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/600px-Instagram_icon.png',
+                                        child: Text("inestagram: ARMY GYM ",
                                         ),
                                       ),
                                     ],

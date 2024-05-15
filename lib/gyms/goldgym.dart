@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../screens/gym_name/model.dart';
 import '../screens/trainer/trainer_screen.dart';
@@ -19,6 +22,13 @@ class Goldgym extends StatefulWidget {
 }
 
 class _GoldgymState extends State<Goldgym> {
+  final Completer<GoogleMapController> _controller =
+  Completer<GoogleMapController>();
+
+  static const CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(31.979942051378394, 35.84040988846536),
+    zoom: 14.4746,
+  );
   final img = [
     'https://i0.wp.com/ace-jordan.com/wp-content/uploads/2023/01/Golds_Gym_Rajamundry.jpeg?resize=768%2C640&ssl=1',
     'https://cdn.gulte.com/wp-content/uploads/2020/05/Golds-Gym-Bankruptcy.jpg',
@@ -32,7 +42,7 @@ class _GoldgymState extends State<Goldgym> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: Custom_AppBar(''),
       body: Padding(
@@ -87,48 +97,43 @@ class _GoldgymState extends State<Goldgym> {
                             underline: false,
                             color: ColorManager.Light_green),
                       ),
-                      Row(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Custom_Container_img(
-                              context: context,
-                              h: 350,
-                              w: size.width / 1.9,
-                              img: 'https://www.google.com/maps/d/thumbnail?mid=15QJ_qiK10k15gPLe0NW-R7Zpm40&hl=en_US'),
+                          SizedBox(
+                            height: 200,
+                            // Specify the height of the map
+                            width: 300, // Set the width to match the screen width
+                            child: GoogleMap(
+                              mapType: MapType.normal,
+                              initialCameraPosition: _kGooglePlex,
+                              onMapCreated: (GoogleMapController controller) {
+                                _controller.complete(controller);
+                              },
+                            ),
+                          ),
+
                           Padding(
-                            padding: const EdgeInsets.only(left: 10),
+                            padding: const EdgeInsets.only(right: 100),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Custom_Text(text: 'Visit Our Gym', size: 15, underline: true),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 30, bottom: 50),
-                                  child: Custom_Text(text: 'Address:', size: 20, underline: false, color: ColorManager.Light_green),
-                                ),
+
+                               SizedBox(height: 10,),
                                 Custom_Text(text: 'Our Socials:', size: 20, underline: false, color: ColorManager.Light_green),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 18),
-                                  child: Row(
+                                  child: Column(
                                     children: [
                                       InkWell(
                                         onTap: () {},
-                                        child: Custom_Container_img(
-                                          context: context,
-                                          h: 35,
-                                          w: 35,
-                                          circular: 50,
-                                          img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShrl-ZYxuud2KegulHKRKecy11bEbkSYq6bsh3XE6WrA&s',
-                                        ),
+                                        child:Text("facebook: Gold's gym ")
                                       ),
-                                      const SizedBox(width: 20),
+                                      const SizedBox(width: 20,
+                                      height: 10,),
                                       InkWell(
                                         onTap: () {},
-                                        child: Custom_Container_img(
-                                          context: context,
-                                          h: 35,
-                                          w: 35,
-                                          circular: 50,
-                                          img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/600px-Instagram_icon.png',
+                                        child: Text("inestagram :  Gold's gym "
                                         ),
                                       ),
                                     ],

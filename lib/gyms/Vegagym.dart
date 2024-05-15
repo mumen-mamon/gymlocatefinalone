@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../screens/gym_name/model.dart';
 import '../screens/trainer/trainer_screen.dart';
@@ -19,6 +22,13 @@ class Vegagym extends StatefulWidget {
 }
 
 class _VegagymState extends State<Vegagym> {
+  final Completer<GoogleMapController> _controller =
+  Completer<GoogleMapController>();
+
+  static const CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(31.998884835963644, 35.83999821469937),
+    zoom: 14.4746,
+  );
   final img = [
     'https://i0.wp.com/livinginjordanasexpat.com/wp-content/uploads/2020/01/img_20191022_084419.jpg?w=521&h=261&ssl=1',
     'https://i0.wp.com/livinginjordanasexpat.com/wp-content/uploads/2020/01/img_20191029_133036.jpg?w=521&h=261&ssl=1',
@@ -87,16 +97,19 @@ class _VegagymState extends State<Vegagym> {
                             underline: false,
                             color: ColorManager.Light_green),
                       ),
-                      Row(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                         // Custom_Container_img(
-                            //  context: context,
-                            //  h: 350,
-                           //   w: size.width / 1.9,
-                           //   img: 'https://www.google.com/maps/d/thumbnail?mid=15QJ_qiK10k15gPLe0NW-R7Zpm40&hl=en_US'),
+                        children: [SizedBox(height: 200,),
+                  GoogleMap(
+                    mapType: MapType.normal,
+                    initialCameraPosition: _kGooglePlex,
+                    onMapCreated: (GoogleMapController controller) {
+                      _controller.complete(controller);
+                    },
+                  ),
+
                           Padding(
-                            padding: const EdgeInsets.only(left: 10),
+                            padding: const EdgeInsets.only(right: 100),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -117,7 +130,7 @@ class _VegagymState extends State<Vegagym> {
                                       const SizedBox(width: 20,height: 5,),
                                       InkWell(
                                         onTap: () {},
-                                        child: Text("inestegram:  vega_Fitnessclubs")
+                                        child: Text("inestagram:  vega_Fitnessclubs")
                                       ),
                                     ],
                                   ),

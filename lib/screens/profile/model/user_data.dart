@@ -14,7 +14,7 @@ class UserData {
     image: "https://upload.wikimedia.org/wikipedia/en/0/0b/Darth_Vader_in_The_Empire_Strikes_Back.jpg",
     name:("name"),
     email: 'test.test@gmail.com',
-    phone: '(208) 206-5039',
+    phone: '(+962) 7* *** ****',
     aboutMeDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ...',
   );
 

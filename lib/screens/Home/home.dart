@@ -93,7 +93,7 @@ class _Home_ScreenState extends State<Home_Screen> {
               ),
             ),
 
-            Custom_Text(text: 'Nearby Gyms', size: 30),
+            Custom_Text(text: 'Suggestion Gyms', size: 30),
 
             const SizedBox(height: 25),
             Expanded(
