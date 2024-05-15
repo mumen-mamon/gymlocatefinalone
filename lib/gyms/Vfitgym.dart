@@ -4,12 +4,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import '../register.dart';
 import '../screens/gym_name/model.dart';
 import '../screens/trainer/trainer_screen.dart';
 import '../utils/color_manager.dart';
 import '../utils/navigators.dart';
 import '../widgets/Buttons/scale_button.dart';
 import '../widgets/appBar/custom_appBar.dart';
+import '../widgets/cards/custom_card.dart';
 import '../widgets/cards/img.dart';
 import '../widgets/slider/custom_slider.dart';
 import '../widgets/texts/custom_text.dart';
@@ -101,13 +103,14 @@ class _VfitgymState extends State<Vfitgym> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          SizedBox(height: 200,),
-                          GoogleMap(
+                          SizedBox(height: 200,
+                         child: GoogleMap(
                             mapType: MapType.normal,
                             initialCameraPosition: _kGooglePlex,
                             onMapCreated: (GoogleMapController controller) {
                               _controller.complete(controller);
                             },
+                          ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(right: 100),
@@ -117,7 +120,7 @@ class _VfitgymState extends State<Vfitgym> {
                                 Custom_Text(text: 'Visit Our Gym', size: 15, underline: true),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 30, bottom: 50),
-                                  child: Custom_Text(text: 'Address:', size: 20, underline: false, color: ColorManager.Light_green),
+
                                 ),
                                 Custom_Text(text: 'Our Socials:', size: 20, underline: false, color: ColorManager.Light_green),
                                 Padding(
@@ -211,13 +214,34 @@ class _VfitgymState extends State<Vfitgym> {
                             const SizedBox(height: 10),
                             GridView.count(
                               shrinkWrap: true,
-                              padding: EdgeInsets.only(left: 15, right: 15),
-                              mainAxisSpacing: 15,
+                              padding: EdgeInsets.only(left: 5, right: 5),
+                              mainAxisSpacing: 10,
                               crossAxisSpacing: 10,
                               crossAxisCount: 2,
                               physics: NeverScrollableScrollPhysics(),
-                              children: Our_Plan,
+                              children: OurPlan,
                             ),
+                            Container(
+                              alignment: Alignment.center,
+                              height: 45,
+                              width: 250,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Color(0xFFEEF0E5),
+                              ),
+                              child: MaterialButton(
+                                height: 30,
+                                minWidth: 20,
+                                onPressed: () {
+                                  Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                      builder: (context) => Register(),
+                                    ),
+                                  );
+                                },
+                                child: const Text('register '),
+                              ),
+                            )
                           ],
                         ),
                       ),
@@ -235,3 +259,30 @@ class _VfitgymState extends State<Vfitgym> {
 
   custom_Card({required int h, required int w, required int size, required String text, Color? color, required FontWeight fontweight}) {}
 }
+
+List<Widget> OurPlan = [
+custom_Card(
+h: 50,
+w: 50,
+size: 20,
+text: '1 Month= 75jd',
+color: Colors.grey[350],
+fontweight: FontWeight.bold,
+),
+custom_Card(
+h: 50,
+w: 50,
+size: 20,
+text: '2 month= 110jd',
+color: Colors.grey[350],
+fontweight: FontWeight.bold,
+),
+custom_Card(
+h: 50,
+w: 50,
+size: 20,
+text: '3 month= 150jd',
+color: Colors.grey[350],
+fontweight: FontWeight.bold,
+),
+];

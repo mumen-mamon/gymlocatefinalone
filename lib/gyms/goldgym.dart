@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:gym1/register.dart';
 
 import '../screens/gym_name/model.dart';
 import '../screens/trainer/trainer_screen.dart';
@@ -221,6 +222,27 @@ class _GoldgymState extends State<Goldgym> {
                               physics: NeverScrollableScrollPhysics(),
                               children: Our_Plan,
                             ),
+                            Container(
+                              alignment: Alignment.center,
+                              height: 45,
+                              width: 250,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Color(0xFFEEF0E5),
+                              ),
+                              child: MaterialButton(
+                                height: 30,
+                                minWidth: 20,
+                                onPressed: () {
+                                  Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                      builder: (context) => Register(),
+                                    ),
+                                  );
+                                },
+                                child: const Text('register '),
+                              ),
+                            )
                           ],
                         ),
                       ),

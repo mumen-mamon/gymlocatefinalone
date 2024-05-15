@@ -6,6 +6,7 @@ import 'package:gym1/gyms/Vegagym.dart';
 import 'package:gym1/gyms/Vfitgym.dart';
 import 'package:gym1/gyms/goldgym.dart';
 import 'package:gym1/screens/gym_name/gym_name.dart';
+import 'package:gym1/utils/navigators.dart';
 //import 'package:flutter/cupertino.dart';
 
 
@@ -44,11 +45,7 @@ class _FilterGymbyRatingState extends State<FilterGymbyRating> {
                     borderRadius: BorderRadius.circular(150)),
                 child: ListTile(
                   onTap: () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => Armygym(),
-                      ),
-                    );
+                    pushNewScreen(context, Armygym());
                   },
                   tileColor: const Color(0xFFb6c4b7),
                   leading: ClipRRect(
@@ -100,13 +97,7 @@ class _FilterGymbyRatingState extends State<FilterGymbyRating> {
                     borderRadius: BorderRadius.circular(120)),
                 child: ListTile(
                   onTap: () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => Goldgym(
-
-                        ),
-                      ),
-                    );
+                    pushNewScreen(context, Goldgym());;
                   },
                   tileColor: const Color(0xFFb6c4b7),
                   leading: ClipRRect(
@@ -157,11 +148,7 @@ class _FilterGymbyRatingState extends State<FilterGymbyRating> {
                     borderRadius: BorderRadius.circular(120)),
                 child: ListTile(
                   onTap: () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => Vegagym(),
-                      ),
-                    );
+                    pushNewScreen(context, Vegagym());;
                   },
                   tileColor: const Color(0xFFb6c4b7),
                   leading: ClipRRect(
@@ -208,11 +195,7 @@ class _FilterGymbyRatingState extends State<FilterGymbyRating> {
                     borderRadius: BorderRadius.circular(120)),
                 child: ListTile(
                   onTap: () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => Vfitgym(),
-                      ),
-                    );
+                    pushNewScreen(context, Vfitgym());;
                   },
                   tileColor: const Color(0xFFb6c4b7),
                   leading: ClipRRect(
@@ -255,11 +238,7 @@ class _FilterGymbyRatingState extends State<FilterGymbyRating> {
                     borderRadius: BorderRadius.circular(120)),
                 child: ListTile(
                   onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => Platinumgym(),
-                      ),
-                    );
+                    pushNewScreen(context, Platinumgym());;
 
 
                   },

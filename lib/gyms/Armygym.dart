@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:gym1/register.dart';
 
 import '../screens/gym_name/model.dart';
 import '../screens/trainer/trainer_screen.dart';
@@ -10,6 +11,7 @@ import '../utils/color_manager.dart';
 import '../utils/navigators.dart';
 import '../widgets/Buttons/scale_button.dart';
 import '../widgets/appBar/custom_appBar.dart';
+import '../widgets/cards/custom_card.dart';
 import '../widgets/cards/img.dart';
 import '../widgets/slider/custom_slider.dart';
 import '../widgets/texts/custom_text.dart';
@@ -99,35 +101,38 @@ class _ArmygymState extends State<Armygym> {
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [ SizedBox(height: 200,),
-                          GoogleMap(
+                        children: [ SizedBox(height: 200,width: 300,
+
+                         child: GoogleMap(
                             mapType: MapType.normal,
                             initialCameraPosition: _kGooglePlex,
                             onMapCreated: (GoogleMapController controller) {
                               _controller.complete(controller);
                             },
                           ),
+                        ),
                           Padding(
                             padding: const EdgeInsets.only(right: 100),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Custom_Text(text: 'Visit Our Gym', size: 15, underline: true),
+                                SizedBox(height: 10,),
+                                Custom_Text(text: 'Visit Our Gym', size: 20, underline: true),
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 30, bottom: 50),
-                                  child: Custom_Text(text: 'Address:', size: 20, underline: false, color: ColorManager.Light_green),
+                                  padding: const EdgeInsets.only(top: 18),
+
                                 ),
                                 Custom_Text(text: 'Our Socials:', size: 20, underline: false, color: ColorManager.Light_green),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 18),
-                                  child: Row(
+                                  child: Column(
                                     children: [
                                       InkWell(
                                         onTap: () {},
                                         child: Text("facebook: ARMY GYM",
                                         ),
                                       ),
-                                      const SizedBox(width: 20),
+                                      const SizedBox(width: 20,height: 10,),
                                       InkWell(
                                         onTap: () {},
                                         child: Text("inestagram: ARMY GYM ",
@@ -216,7 +221,28 @@ class _ArmygymState extends State<Armygym> {
                               crossAxisSpacing: 10,
                               crossAxisCount: 2,
                               physics: NeverScrollableScrollPhysics(),
-                              children: Our_Plan,
+                              children: Plann,
+                            ),
+                            Container(
+                              alignment: Alignment.center,
+                              height: 45,
+                              width: 250,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Color(0xFFEEF0E5),
+                              ),
+                              child: MaterialButton(
+                                height: 30,
+                                minWidth: 20,
+                                onPressed: () {
+                                  Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                      builder: (context) => Register(),
+                                    ),
+                                  );
+                                },
+                                child: const Text('register '),
+                              ),
                             ),
                           ],
                         ),
@@ -233,3 +259,29 @@ class _ArmygymState extends State<Armygym> {
     );
   }
 }
+List<Widget> Plann = [
+  custom_Card(
+    h: 50,
+    w: 50,
+    size: 20,
+    text: '3 Month= 150jd',
+    color: Colors.grey[350],
+    fontweight: FontWeight.bold,
+  ),
+  custom_Card(
+    h: 50,
+    w: 50,
+    size: 20,
+    text: '6 month= 225jd',
+    color: Colors.grey[350],
+    fontweight: FontWeight.bold,
+  ),
+  custom_Card(
+    h: 50,
+    w: 50,
+    size: 20,
+    text: '1 year= 315jd',
+    color: Colors.grey[350],
+    fontweight: FontWeight.bold,
+  ),
+];

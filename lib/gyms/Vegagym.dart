@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:gym1/register.dart';
 
 import '../screens/gym_name/model.dart';
 import '../screens/trainer/trainer_screen.dart';
@@ -10,6 +11,7 @@ import '../utils/color_manager.dart';
 import '../utils/navigators.dart';
 import '../widgets/Buttons/scale_button.dart';
 import '../widgets/appBar/custom_appBar.dart';
+import '../widgets/cards/custom_card.dart';
 import '../widgets/cards/img.dart';
 import '../widgets/slider/custom_slider.dart';
 import '../widgets/texts/custom_text.dart';
@@ -99,15 +101,15 @@ class _VegagymState extends State<Vegagym> {
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [SizedBox(height: 200,),
-                  GoogleMap(
+                        children: [SizedBox(height: 200,
+                 child: GoogleMap(
                     mapType: MapType.normal,
                     initialCameraPosition: _kGooglePlex,
                     onMapCreated: (GoogleMapController controller) {
                       _controller.complete(controller);
                     },
                   ),
-
+                        ),
                           Padding(
                             padding: const EdgeInsets.only(right: 100),
                             child: Column(
@@ -215,8 +217,29 @@ class _VegagymState extends State<Vegagym> {
                               crossAxisSpacing: 10,
                               crossAxisCount: 2,
                               physics: NeverScrollableScrollPhysics(),
-                              children: Our_Plan,
+                              children: Our__Plan,
                             ),
+                            Container(
+                              alignment: Alignment.center,
+                              height: 45,
+                              width: 250,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Color(0xFFEEF0E5),
+                              ),
+                              child: MaterialButton(
+                                height: 30,
+                                minWidth: 20,
+                                onPressed: () {
+                                  Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                      builder: (context) => Register(),
+                                    ),
+                                  );
+                                },
+                                child: const Text('register '),
+                              ),
+                            )
                           ],
                         ),
                       ),
@@ -232,3 +255,37 @@ class _VegagymState extends State<Vegagym> {
     );
   }
 }
+List<Widget> Our__Plan = [
+  custom_Card(
+    h: 50,
+    w: 50,
+    size: 20,
+    text: '1 Month= 70jd',
+    color: Colors.grey[350],
+    fontweight: FontWeight.bold,
+  ),
+  custom_Card(
+    h: 50,
+    w: 50,
+    size: 20,
+    text: '3 month= 140jd',
+    color: Colors.grey[350],
+    fontweight: FontWeight.bold,
+  ),
+  custom_Card(
+    h: 50,
+    w: 50,
+    size: 20,
+    text: '6 month= 230jd',
+    color: Colors.grey[350],
+    fontweight: FontWeight.bold,
+  ),
+  custom_Card(
+    h: 50,
+    w: 50,
+    size: 20,
+    text: '1 year= 407jd',
+    color: Colors.grey[350],
+    fontweight: FontWeight.bold,
+  ),
+];
