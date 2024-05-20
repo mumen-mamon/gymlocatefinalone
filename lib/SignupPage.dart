@@ -51,7 +51,7 @@ class _SignupPageState extends State<SignupPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  "assets/gymlocate.jpg",
+                  "assets/logo.png",
                   alignment: Alignment.topCenter,
                 ),
                 const SizedBox(height: 80),

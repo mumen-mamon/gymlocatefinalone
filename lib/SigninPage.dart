@@ -36,7 +36,7 @@ class _SigninPageState extends State<SigninPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      "assets/gymlocate.jpg"
+                      "assets/logo.png"
                       ,alignment: Alignment.topCenter,
                     ),
                     const SizedBox(height: 100),
@@ -56,7 +56,8 @@ class _SigninPageState extends State<SigninPage> {
                      }),
                        TextButton(
                       onPressed: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=> ForgotPasswordPage(),
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder:(context)=> ForgotPasswordPage(),
                        ),
                        );
                       },
@@ -128,7 +129,7 @@ class _SigninPageState extends State<SigninPage> {
                             }
                           }
                         },
-                        child: Text('Sign In'),
+                        child: Text('Sign In'),textColor: Colors.white,
                       ),
 
 

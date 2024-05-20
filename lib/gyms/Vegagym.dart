@@ -219,26 +219,32 @@ class _VegagymState extends State<Vegagym> {
                               physics: NeverScrollableScrollPhysics(),
                               children: Our__Plan,
                             ),
-                            Container(
-                              alignment: Alignment.center,
-                              height: 45,
-                              width: 250,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: Color(0xFFEEF0E5),
-                              ),
-                              child: MaterialButton(
-                                height: 30,
-                                minWidth: 20,
-                                onPressed: () {
-                                  Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(
-                                      builder: (context) => Register(),
-                                    ),
-                                  );
-                                },
-                                child: const Text('register '),
-                              ),
+                            SizedBox(height: 20,),
+                            Row(
+                              children: [
+                                SizedBox(width: 20,),
+                                Container(
+                                  alignment: Alignment.center,
+                                  height: 45,
+                                  width: 250,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.greenAccent,
+                                  ),
+                                  child: MaterialButton(
+                                    height: 30,
+                                    minWidth: 20,
+                                    onPressed: () {
+                                      Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(
+                                          builder: (context) => Register(),
+                                        ),
+                                      );
+                                    },
+                                    child: const Text('register '),
+                                  ),
+                                ),
+                              ],
                             )
                           ],
                         ),

@@ -59,7 +59,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                       child: Text(
                         'filter gym by rating',
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                          // decoration: TextDecoration.underline,
                         ),
                       ),
@@ -82,7 +82,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                         child: Text(
                           'member ship details',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.white,
                            // decoration: TextDecoration.underline,
                           ),
                         ),

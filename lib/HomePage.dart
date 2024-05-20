@@ -70,32 +70,16 @@ class My_TabBarState extends State<My_TabBar> with TickerProviderStateMixin {
     return Scaffold(
       bottomNavigationBar: MotionTabBar(
         controller: _motionTabBarController,
-        useSafeArea: true,
-        initialSelectedTab: "Home",
+        useSafeArea: true, initialSelectedTab: "Home",
         labels: const ["Home", "Great Job", "Location", "Profile",],
         icons: const [Icons.home, Icons.work, Icons.location_on, Icons.person,],
-        badges: const [
-          null,
-          // MotionBadgeWidget(
-          //   text: '${1}',
-          //   textColor: Colors.white,
-          //   color: Colors.red,
-          //   size: 20,
-          // ),
-          null,
-          null,
-          null,
+        badges: const [null, null, null, null,
         ],
-        tabSize: 50,
-        tabBarHeight: 60,
+        tabSize: 50, tabBarHeight: 60,
         textStyle: const TextStyle(fontSize: 12, color: ColorManager.w, fontWeight: FontWeight.w500),
-        tabIconColor: ColorManager.w,
-        tabIconSize: 28.0,
-        tabIconSelectedSize: 26.0,
+        tabIconColor: ColorManager.w, tabIconSize: 28.0, tabIconSelectedSize: 26.0,
         tabSelectedColor: ColorManager.w,
-        tabIconSelectedColor: ColorManager.Primer,
-        tabBarColor: ColorManager.Primer,
-        onTabItemSelected: (int value) {
+        tabIconSelectedColor: ColorManager.Primer, tabBarColor: ColorManager.Primer, onTabItemSelected: (int value) {
           setState(() {
             _motionTabBarController!.index = value;
           });
