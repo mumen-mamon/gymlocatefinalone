@@ -3,86 +3,123 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:gym1/utils/navigators.dart';
+import '../../gyms/Armygym.dart';
 import '../../widgets/appBar/custom_appBar.dart';
 import 'package:geolocator/geolocator.dart';
 
-class Location extends StatefulWidget {
-  const Location({Key? key}) : super(key: key);
-
+class LocationScreen extends StatefulWidget {
+  const LocationScreen({Key? key}) : super(key: key);
   @override
-  _LocationState createState() => _LocationState();
+  _LocationScreenState createState() => _LocationScreenState();
 }
 
-class _LocationState extends State<Location> {
-  final Completer<GoogleMapController> _controller =
-  Completer<GoogleMapController>();
+class _LocationScreenState extends State<LocationScreen> {
+  GoogleMapController? _mapController;
+  Position? _currentPosition;
+  final LatLng _initialPosition = LatLng(31.9544, 35.9106); // Default to San Francisco
+  final Set<Marker> _markers = {};
 
-  static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(31.948269494836037, 35.91431131857672),
-    zoom: 14.4746,
-  );
+  @override
+  void initState() {
+    super.initState();
+    _getCurrentLocation();
+  }
 
-  /// Determine the current position of the device.
-  ///
-  /// When the location services are not enabled or permissions
-  /// are denied the `Future` will return an error.
-  Future<Position> _determinePosition() async {
+  Future<void> _getCurrentLocation() async {
     bool serviceEnabled;
     LocationPermission permission;
 
-    // Test if location services are enabled.
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      // Location services are not enabled don't continue
-      // accessing the position and request users of the
-      // App to enable the location services.
       return Future.error('Location services are disabled.');
     }
 
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
-
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-
-      }
-      if (permission == LocationPermission.whileInUse){
-        Position position = await Geolocator.getCurrentPosition();
-        print("--------------------------");
-        print(position.longitude);
-        print(position.latitude);
+        return Future.error('Location permissions are denied');
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      // Permissions are denied forever, handle appropriately.
-      return Future.error(
-          'Location permissions are permanently denied, we cannot request permissions.');
+      return Future.error('Location permissions are permanently denied.');
     }
 
-    // When we reach here, permissions are granted and we can
-    // continue accessing the position of the device.
-    return await Geolocator.getCurrentPosition();
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    setState(() {
+      _currentPosition = position;
+      _markers.add(
+        Marker(
+          markerId: MarkerId('currentLocation'),
+          position: LatLng(
+            _currentPosition!.latitude,
+            _currentPosition!.longitude,
+          ),
+          infoWindow: InfoWindow(
+            title: 'Current Location',
+            snippet: 'This is your current location',
+            onTap: _onMarkerTapped,
+          ),
+        ),
+      );
+      _markers.add(
+        Marker(
+          markerId: MarkerId('anotherLocation'),
+          position: LatLng(
+              31.990607424867047, 35.909659606804034
+          ),
+          infoWindow: InfoWindow(
+            title: 'Another Location',
+            snippet: 'This is another location',
+            onTap: _onAnotherMarkerTapped,
+          ),
+        ),
+      );
+      _mapController?.animateCamera(
+        CameraUpdate.newLatLng(
+          LatLng(position.latitude, position.longitude),
+        ),
+      );
+    });
   }
 
+  void _onMarkerTapped() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: Text('Current Location Marker tapped!'),
+        );
+      },
+    );
+  }
 
+  void _onAnotherMarkerTapped() {
+    pushNewScreen(context, Armygym());
+
+  }
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-         height: 725,
-          child: GoogleMap(
-          mapType: MapType.normal,
-          initialCameraPosition: _kGooglePlex,
-          onMapCreated: (GoogleMapController controller)
-    {
-      _controller.complete(controller);
-    },
-
-    ),
+      appBar: AppBar(
+        title: Text('Location on Map'),
+      ),
+      body: _currentPosition == null
+          ? Center(child: CircularProgressIndicator())
+          : GoogleMap(
+        onMapCreated: (controller) {
+          _mapController = controller;
+        },
+        initialCameraPosition: CameraPosition(
+          target: _initialPosition,
+          zoom: 14.0,
         ),
+        markers: _markers,
+      ),
     );
-
   }
 }

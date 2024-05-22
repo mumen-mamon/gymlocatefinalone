@@ -91,7 +91,7 @@ class My_TabBarState extends State<My_TabBar> with TickerProviderStateMixin {
         children: [
           Home_Screen(),
           Graphic_Screen(),
-          Location(),
+          LocationScreen(),
           ProfilePage(),
          // Date_Screen()
         ],
